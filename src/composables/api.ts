@@ -4,20 +4,20 @@ import { config } from './config'
 const { baseUrl, apiKey } = config
 
 /***
- * Fetching the gits from the giphy API by the given keyword
+ * Fetching the gits from the giphy API by the given query
  *
- * @param keyword
- * @param perPage
+ * @param query
+ * @param limit
  * @param offset
  *
- * @return Promise<any>
+ * @returns Promise<any>
  */
-export async function fetchGifs( keyword: string, perPage: number, offset: number ): Promise<any>
+export async function fetchGifs( query: string, limit: number, offset: number ): Promise<any>
 {
-    if ( !keyword || keyword.length < 3 ) return false
+    if ( !query || query.length < 3 ) return false
 
     try {
-        const response: AxiosResponse = await axios.get( `${ baseUrl }?api_key=${ apiKey }&q=${ keyword }&limit=${ perPage }&offset=${ offset }&rating=g&lang=en` )
+        const response: AxiosResponse = await axios.get( `${ baseUrl }?api_key=${ apiKey }&q=${ query }&limit=${ limit }&offset=${ offset }&rating=g&lang=en` )
 
         return response?.data ? response.data : false
     } catch ( error ) {
