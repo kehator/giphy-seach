@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-    import Paginate from 'vuejs-paginate-next';
-    import { defineProps, defineEmits, type Ref, ref, watch } from 'vue'
+    import Paginate from 'vuejs-paginate-next'
+    import { type Ref, ref, watch } from 'vue'
 
     const props = defineProps<{
         data: Object[],
@@ -28,7 +28,7 @@
 </script>
 
 <template>
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap justify-center gap-4">
         <div v-for="( gif, index ) in gifs" :key="index" class="flex place-items-center w-72 h-72 bg-black">
             <a :href="gif.url" class="flex w-full h-full justify-center" target="_blank">
                 <img :alt="gif.title" :src="gif.images.original.url">
